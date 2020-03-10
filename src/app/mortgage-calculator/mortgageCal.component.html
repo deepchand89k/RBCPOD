@@ -1,0 +1,226 @@
+<header>
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css"
+    rel="stylesheet"
+  />
+  <iframe
+    src="https://giphy.com/embed/l3V0BsvDwmrjgSPDi"
+    width="80"
+    height="55"
+    frameBorder="0"
+    class="giphy-embed"
+    allowFullScreen
+  ></iframe>
+  <div>
+    <h1>POD</h1>
+  </div>
+  <div>
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-sm bg-light">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link motto" href="#">
+            <h4>Plan</h4>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link motto" href="#">
+            <h4>Obtain</h4>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link motto" href="#">
+            <h4>Delight</h4>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div>
+<main>
+  <form #mortgage="ngForm" (ngSubmit)="submit(mortgage.value)">
+    <div class="inputs leftDisp">
+      <h2>Payment Plan</h2>
+      <div id="line"></div>
+      <div class="input">
+        <label for="homeprice"
+          >Home Price
+          <i
+            class="fa fa-info-circle"
+            data-toggle="tooltip"
+            title="Referring to the price of your current or future home."
+          ></i>
+        </label>
+        <div class="dollar">
+          $
+          <input
+            (keyup)="submit(mortgage.value)"
+            id="home"
+            name="home"
+            title="Enter home price here."
+            placeholder="ex. 200000"
+            [(ngModel)]="mortgageTotal.home"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="input">
+        <label for="down">
+          Down Payment
+          <i
+            class="fa fa-info-circle"
+            href="#"
+            data-toggle="tooltip"
+            title="This is the down payment you paid (or plan to pay)."
+          ></i>
+        </label>
+        <div id="dphold" class="dollar">
+          $
+          <input
+            (keyup)="submit(mortgage.value)"
+            id="down"
+            name="down"
+            title="Down Payment Amount"
+            placeholder="ex. 20000"
+            [(ngModel)]="mortgageTotal.down"
+            ngModel
+            required
+          />
+        </div>
+      </div>
+      <div class="input">
+        <label for="loanTerm"
+          >Length of Loan
+          <i
+            class="fa fa-info-circle"
+            href="#"
+            data-toggle="tooltip"
+            title="Referring to the length of your loan in years."
+          ></i>
+        </label>
+        <select
+          class="custom-select"
+          [(ngModel)]="mortgageTotal.loanTerm"
+          name="loanTerm"
+          (mouseleave)="submit(mortgage.value)"
+        >
+          <option value="" disabled>Please Select One</option>
+          <option value="10">10 Years</option>
+          <option value="15">15 Years</option>
+          <option value="20">20 Years</option>
+          <option value="30">30 Years</option>
+        </select>
+      </div>
+      <div class="input">
+        <label for="interest"
+          >Interest
+          <i
+            class="fa fa-info-circle"
+            href="#"
+            data-toggle="tooltip"
+            title="Referring to your interest rate, or APR (Annual Percentage Rate)."
+          ></i>
+        </label>
+        <div class="percent">
+          <input
+            (keyup)="submit(mortgage.value)"
+            id="interest"
+            name="interest"
+            title="Interest Rate"
+            placeholder="ex. 3.29"
+            [(ngModel)]="mortgageTotal.interest"
+            required
+          />%
+        </div>
+      </div>
+    </div>
+    <div class="inputs rightDisp">
+      <h2>Monthly Expenses</h2>
+      <div id="line"></div>
+      <div>
+        <p>Monthly Payment</p>
+        <p id="base">${{ monthlyPayment }}</p>
+      </div>
+      <div>
+        <p>
+          Insurance
+        </p>
+        <div>
+          <p>+</p>
+          <input
+            id="insurance"
+            name="insurance"
+            type="number"
+            title="homeowners insurance amount"
+            [(ngModel)]="mortgageTotal.insurance"
+            required
+            placeholder="ex. 200"
+          />
+        </div>
+      </div>
+      <div>
+        <p>Property Tax</p>
+        <div>
+          <p>+</p>
+          <input
+            id="proTax"
+            name="proTax"
+            type="number"
+            title="Property Tax"
+            [(ngModel)]="mortgageTotal.proTax"
+            required
+            placeholder="ex. 200"
+          />
+        </div>
+      </div>
+      <div>
+        <p>HOA Fees</p>
+        <div>
+          <p>+</p>
+          <input
+            id="HOA"
+            name="HOA"
+            type="number"
+            title="HOA Fees"
+            [(ngModel)]="mortgageTotal.HOA"
+            required
+            placeholder="ex. 200"
+          />
+        </div>
+      </div>
+      <div class="summary">
+        <p>Total Monthy Payment</p>
+        <p id="premium">${{ totalMonthlyPayment }}</p>
+      </div>
+    </div>
+  </form>
+  <div>
+    <div class="container item">
+      <div class="pull-left">
+        <h2>
+          Mortgage Summary
+        </h2>
+        <div id="line"></div>
+        <div>
+          <p>
+            &nbsp;Over the {{ totalTerm }}-year amortization period,
+            you will have made monthly payments of <strong>${{ monthlyPayment }}</strong> towards <strong>${{ totalPayment }}</strong>.
+          </p>
+            <a>
+              and have paid <strong>${{ capital }}</strong> in principal, <strong>${{ totalInterest }}</strong> in interest.
+            </a>
+        </div>
+      </div>
+      <div class="pull-right chart">
+        <ngx-charts-pie-chart [results]="data" [labels]="true">
+        </ngx-charts-pie-chart>
+      </div>
+    </div>
+  </div>
+</main>
+</div>
+
+<footer></footer>

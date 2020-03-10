@@ -1,0 +1,174 @@
+$main-color: #f2f2f2
+$inverse-gradient: linear-gradient(145deg, #cbd6d6, #f1ffff)
+$inputs-shadow: -30px 30px 60px #c0cacd, 30px -30px 60px #ffffff
+
+@mixin center-center
+    justify-content: center
+    align-items: center
+@mixin input-style
+    box-shadow: 3px 3px 7px #bfcaca, -3px -3px 7px #ffffff
+    border: 2px solid #fa8619af
+    border-radius: 5px
+
+a
+    text-decoration: none
+    color: black
+
+.item
+    width: 100%
+
+ul
+    display: flex
+    padding-left: 5px
+
+li
+    padding-right: 5px
+    list-style-type: none
+    a
+      color: #F76300
+
+.motto
+    height: 25px
+
+h2
+    font-size: 25px
+
+.input
+    display: flex
+    flex-direction: column
+
+form
+    font-size: 1.2em
+    display: flex
+    flex-direction: column
+    width: 100vw
+    align-items: center
+    justify-content: space-around
+    padding: 120px 0 40px 0
+main
+    justify-content: space-evenly
+    align-items: center
+    width: 100vw
+    height: 70%
+    background-color: $main-color
+
+.inputs
+    height: 350px
+    padding: 30px
+    width: 70vw
+    border-radius: 5px
+    background: #D8DBDA
+    box-shadow: $inputs-shadow
+
+.leftDisp
+    label
+        padding: 2px
+        margin-bottom: 0px
+        font-weight: bold
+        z-index: 2
+
+.rightDisp
+    margin-top: 20px
+    div
+        height: 47px
+    p
+       margin-top: 20px
+    div
+        display: flex
+        justify-content: space-between
+        align-items: center
+    input
+        height: 50%
+        width: 75px
+
+.fas:hover
+    cursor: pointer
+    color: #ffffff
+
+header
+    height: 40px
+    width: 100vw
+    display: flex
+
+input
+    height: 1.2em
+    font-size: 1em
+    width: 80%
+    border: 0
+    background: $inverse-gradient
+
+select
+    height: 35px
+    font-size: .8em
+    width: 100%
+    cursor: pointer
+    background: $inverse-gradient
+
+#home
+    padding-left: 20px
+
+#down
+    padding-left: 20px
+
+#interest
+    padding: 0 15px 0 5px
+
+#base, #premium
+
+    font-size: 1.2em
+    font-weight: 500
+
+.percent
+    background: $inverse-gradient
+
+.dollar
+    background: $inverse-gradient
+
+header
+    top: 20px
+    left:30px
+    position: absolute
+
+#line
+    height: 5px
+    background-color: #014c67
+    width: 100%
+    padding: 0
+
+@media only screen and (min-width: 500px)
+    main
+        flex-direction: row
+        height: 70%
+    .inputs
+        width: 33vw
+    .motto
+        height: 18px
+    form
+        flex-direction: row
+        padding: 120px 0 60px 0
+
+@media only screen and (min-width: 768px)
+
+    #about
+        height: 50vh
+        width: 50vw
+    main
+        height: 50vh
+    .motto
+        height: 25px
+    h2
+        font-size: 25px
+
+@media only screen and (min-width: 992px)
+
+    #about
+        height: 50vh
+        width: 50vw
+    main
+        height: 80vh
+    .motto
+        height: 25px
+    h2
+        font-size: 25px
+    form
+        padding: 120px 0 120px 0
